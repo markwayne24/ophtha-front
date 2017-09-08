@@ -3,9 +3,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Loading from './components/Loading';
 import Loadable from 'react-loadable';
 
-import 'antd/dist/antd.css';
-import './styles/index.css';
-
 const AsyncLoginLayout = Loadable({
 	loader: () => import('./layouts/auth'),
 	loading: Loading

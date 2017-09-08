@@ -1,7 +1,17 @@
 // @flow
 
 import React, { Component } from 'react';
-import { Layout, Menu, Icon, BackTop, Dropdown, Input, Row, Col, Avatar } from 'antd';
+import { 
+    Layout,
+    Menu, 
+    Icon, 
+    BackTop, 
+    Dropdown, 
+    Input, 
+    Row, 
+    Col, 
+    Avatar
+} from 'antd';
 import Loadable from 'react-loadable';
 import Loading from '../components/Loading';
 import {
