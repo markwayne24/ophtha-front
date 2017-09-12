@@ -29,37 +29,37 @@ const AsyncDashboard = Loadable({
 });
 
 const AsyncPatients = Loadable({
-    loader: () => import('../pages/Dashboard/Patients'),
+    loader: () => import('../pages/Patients'),
     loading: Loading
 });
 
 const AsyncManagement = Loadable({
-    loader: () => import('../pages/Dashboard/Management'),
+    loader: () => import('../pages/Management'),
     loading: Loading
 });
 
 const AsyncAccounting = Loadable({
-    loader: () => import('../pages/Dashboard/Management/Accounting'),
+    loader: () => import('../pages/Management/Accounting'),
     loading: Loading
 });
 
 const AsyncProcedures = Loadable({
-    loader: () => import('../pages/Dashboard/Management/Procedures'),
+    loader: () => import('../pages/Management/Procedures'),
     loading: Loading
 });
 
 const AsyncAccounts = Loadable({
-    loader: () => import('../pages/Dashboard/Management/Accounts'),
+    loader: () => import('../pages/Management/Accounts'),
     loading: Loading
 });
 
 const AsyncClinics = Loadable({
-    loader: () => import('../pages/Dashboard/Management/Clinics'),
+    loader: () => import('../pages/Management/Clinics'),
     loading: Loading
 });
 
 const AsyncApplicationSettings = Loadable({
-    loader: () => import('../pages/Dashboard/Management/ApplicationSettings'),
+    loader: () => import('../pages/Management/ApplicationSettings'),
     loading: Loading
 });
 
@@ -137,7 +137,6 @@ class DefaultLayout extends Component{
                     collapsed={collapsed}
                     onCollapse={this.toggle}
                     >
-                        <div className="logo" />
                         <Menu theme="dark" defaultSelectedKeys={[`${match.url}`]} mode="inline" onClick={this.linkTo}>
                             <Menu.Item key={`${match.url}`}>
                                 <Icon type="home" />
@@ -174,7 +173,7 @@ class DefaultLayout extends Component{
                             </Switch>
                         </Content>
                         <Footer style={{ textAlign: 'center' }}>
-                            Ant Design ©2016 Created by Ant UED
+                            
                         </Footer>
                     </Layout>
                 </Layout>
