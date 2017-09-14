@@ -18,6 +18,7 @@ import {
     Route,
     Switch
 } from 'react-router-dom';
+import MenuTop from '../components/Menu';
 
 const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -63,23 +64,26 @@ const AsyncApplicationSettings = Loadable({
     loading: Loading
 });
 
-const menu = (
-    <Menu>
-        <Menu.Item key="1">
-            <Icon type='idcard' className='margin'/>
-            My Profile
-        </Menu.Item>
-        <Menu.Item key="2">
-            <Icon type='lock' className='margin' />
-            Lock Screen
-        </Menu.Item>
-        <Menu.Divider />
-        <Menu.Item key="3">
-            <Icon type='key' className='margin' />
-            Logout
-        </Menu.Item>
-    </Menu>
-);
+const menus = [
+    {
+        key:'profile',
+        text:'My Profile',
+        icon: 'idcard',
+        url:'/profile'
+    },
+    {
+        key:'lock',
+        text:'Lock',
+        icon:'lock',
+        url:'/lock'
+    },
+    {
+        key:'login',
+        text:'Logout',
+        icon:'key',
+        url:'/'
+    },
+];
 
 class DefaultLayout extends Component{
     state = {
@@ -97,6 +101,15 @@ class DefaultLayout extends Component{
         history.push(key);
     }
 
+    transition = event => {
+        event.preventDefault();
+        let history = this.props.history;
+        history.push({
+          pathname: event.currentTarget.pathname,
+          search: event.currentTarget.search
+        });
+    };
+
     render() {
         const { collapsed } = this.state;
         const { match } = this.props;
@@ -113,12 +126,14 @@ class DefaultLayout extends Component{
                         </Col>
                         <Col span={8}>
                             <div style={{textAlign:'center'}}>
-                                <Avatar className='small-logo' shape='square'src='/img/logo-small.png'/>
+                                <a href='/dashboard' onClick={this.transition}>
+                                    <Avatar className='small-logo' shape='square'src='/img/logo-small.png'/>
+                                </a>
                             </div>  
                         </Col>
                         <Col span={8}>
                             <div style={{float:'right'}}>
-                                <Dropdown overlay={menu} trigger={['click']} style={{display:'flex', alignItems:'middle'}}>
+                                <Dropdown overlay={<MenuTop menus={menus} />} trigger={['click']} style={{display:'flex', alignItems:'middle'}}>
                                     <span className="pointer" style={{display:'flex'}}>
                                         <Avatar shape='circle' size='large' style={{margin:'10px 5px', lineHeight:'40px', backgroundColor: '#87d068'}} icon='user' />
                                         <div>
