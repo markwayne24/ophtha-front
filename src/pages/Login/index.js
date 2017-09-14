@@ -12,16 +12,25 @@ class Login extends Component {
         authenticated: false
     }
 
-    _login = async () => {
+    _login = () => {
+        this.props.form.validateFields((err, values) => {
+            if (err) {
+                return;
+            }
+            this.AsyncAuth();
+            console.log('Received values of form: ', values);
+        });
+    };
+
+    AsyncAuth = async () => {
         this.setState({authenticating: true});
-    
         await setTimeout(() => {
             this.setState({
                 authenticating: false,
                 authenticated: true
             });
         }, 2000);
-    };
+    }
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -47,7 +56,7 @@ class Login extends Component {
 
         return (
             <Layout style={{background: '#fff'}}>
-                <Form onSubmit={this.handleSubmit} className="login-form" style={{margin:'auto'}}>
+                <Form className="login-form" style={{margin:'auto'}}>
                     <img className="custom-image" src="/img/logo-big.png" alt="logo" />
                     <FormItem>
                         {getFieldDecorator('userName', {
