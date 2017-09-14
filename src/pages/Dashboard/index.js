@@ -198,8 +198,7 @@ class Dashboard extends Component {
                                 />
                         </Col>
                     </Row>
-                </div>
-                <Modal
+                    <Modal
                     visible={visible}
                     title="Title"
                     onOk={this.handleOk}
@@ -216,6 +215,7 @@ class Dashboard extends Component {
                         <p>Some contents...</p>
                         <p>Some contents...</p>
                     </Modal>
+                </div>
             </div>
         );
     }
