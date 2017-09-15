@@ -101,14 +101,14 @@ class DefaultLayout extends Component{
         history.push(key);
     }
 
-    transition = event => {
-        event.preventDefault();
+    transition = (e: any) => {
+        e.preventDefault();
         let history = this.props.history;
         history.push({
-          pathname: event.currentTarget.pathname,
-          search: event.currentTarget.search
+          pathname: e.currentTarget.pathname,
+          search: e.currentTarget.search
         });
-    };
+    }
 
     render() {
         const { collapsed } = this.state;
